@@ -1,0 +1,171 @@
+*{
+    padding: 0;
+    margin:0;
+    box-sizing: border-box;
+    font-family: 'Maven Pro', sans-serif;
+    outline: none;
+    scroll-behavior: smooth;
+}
+html {
+    width:100vw;
+    overflow-x:hidden;
+}
+body{
+    color:#000;
+    background-color: rgb(226, 226, 238);
+}
+#container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 15px 10px 30px 10px;
+    margin:0 auto;
+    width:50%;
+}
+#container div{
+    margin: 10px 0px;
+}
+header{
+    width:100%;
+    background-color:  rgb(255, 255, 255);
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 50px;
+}
+header span{
+    background: linear-gradient(to left, rgb(14, 227, 255), rgb(0, 132, 255));
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent;
+    font-weight:bold;
+    font-size: 60px;
+}
+header img{
+    height: 45px;
+}
+#clear{
+    cursor: pointer;
+    transition: all ease 0.6s;
+}
+#clear:hover{
+    transform:rotate(50deg);
+}
+#unos{
+    padding: 10px 15px;
+    font-size:20px;
+    width:90%;
+    border-radius: 30px;
+    border:2px solid rgb(0, 174, 255);
+    transition: 0.5s ease;
+}
+#unos:focus{
+    border-color:rgb(0, 116, 170);
+}
+.btn{
+    background-color:rgb(0, 116, 170);
+    border-color:rgb(0, 116, 170);
+    padding: 10px 15px;
+    border-radius: 10px;
+    transition: all ease .5s;
+}
+.btn:hover{
+    background-color:rgb(0, 107, 156);
+}
+.wrap,.task, #new{
+    width:100%;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.task{
+    width:90%;
+    background-color:#fff;
+    border-radius: 10px;
+    border-bottom:3px solid rgb(0, 116, 170);
+    padding: 5px 15px;
+}
+.fa-trash{
+    cursor: pointer;
+    color: rgb(0, 116, 170);;
+    font-size: 25px;
+}
+p{
+    font-size: 23px;
+    color:rgb(11, 91, 97);
+    margin:0;
+}
+input[type='checkbox']{
+    border:0.1em solid #000;
+    width:1em;
+    height:1em;
+    font-size: 25px;
+}
+#new{
+    justify-content: center;
+    flex-direction: column;
+}
+#btnScroll{
+    position: fixed;
+    bottom: 20px;
+    width: 7%;
+    right:35px;
+    display: none;
+    background-color:#fff;
+    border-radius: 15px;
+    border:2px solid rgb(0, 116, 170);
+    outline: none;
+    padding: 5px;
+    transition: all ease 0.3s;
+}
+#btnScroll:hover{
+    background-color: rgb(0, 116, 170);;
+    color:#fff;
+}
+
+@media only screen and (max-width: 600px) {
+  
+    #container{
+        width:100%;
+    }
+    #container div{
+        margin:5px;
+    }
+    header{
+        padding:0;
+    }
+    header img{
+        padding: 0 10px;
+        height:30px;
+    }
+    header span{
+        font-size: 40px;
+    }
+    .fa-trash,input[type=checkbox]{
+        font-size: 20px;
+    }
+    .btn{
+        padding:7px;
+        border-radius: 10px;
+        font-size:16px;
+    }
+    #unos{
+        font-size: 16px;
+        padding:7px 10px;
+        width:85%;
+    }
+    .task p{
+        font-size: 16px;
+    }
+    .task {
+        width: 100%;
+        padding:8px 13px;
+    }
+    #btnScroll{
+        width:20%;
+        bottom:5px;
+        right:5px;
+        border:2px solid rgb(0, 116, 170);
+        padding: 0;
+    }
+}
