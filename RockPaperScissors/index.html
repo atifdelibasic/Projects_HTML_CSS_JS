@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./Images/handR.png" type="image/gif" sizes="16x16">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="rpss1.css">
+    <title>RockPaperScissors</title>
+</head>
+<body>
+    <div class="pocetna">
+        <div class="info">
+            <h1>Welcome to rock paper scissors!</h1>
+            <h2>What is the game about?</h2>
+            <p>Rock paper scissors (also known as scissors rock paper, paper rock scissors and scissors paper stone) is a hand game usually played between two people, in which each player simultaneously forms one of three shapes with an outstretched hand.</p>
+            <h2>After clicking "Get started", choose rock, papper or scissors to start the game</h2>
+            <button id="btnStart" onclick = "HideShow()">Get started</button>
+        </div>
+    </div>
+    <div class="content">
+        <header>
+            <div class="slike">
+                <img src="./Images/stone.png" alt="">
+                <img src="./Images/paper-plane.png" alt="">
+                <img src="./Images/scissors (2).png" alt="">
+            </div>
+            <div class="naslov">
+                <p>ROCK PAPPER SCISSORS</p>
+            </div>
+        </header>
+        <div class="wrapper">
+            <div id="round" class="round">Round: 0</div>
+            <div class="container">
+                <div id="player">
+                    <div class="result" >
+                        <p id="resPlayer" class="res">Win: 0</p>
+                    </div>
+                    <img id="imgPlayer" class="mainPic" src="./Images/handR.png" alt="">
+                        <div class = "odabir">
+                            <img src="./Images/handR.png" onclick="Odabir(1)" alt="">
+                            <img src="./Images/handP.png" onclick="Odabir(2)"alt="">
+                            <img src="./Images/handS.png" onclick="Odabir(3)"alt="">
+                        </div>
+                </div>
+                <div id="poruka">
+                    Choose rock, paper or scissors to begin
+                </div>
+                <div id="comp">
+                    <div class="result" >
+                        <p id="resComp" class="res">Win: 0</p>
+                    </div>
+                    <img id="imgComputer" class="mainPic" src="./Images/handR.png" alt="">
+                    <div id="tekst">
+                        <p>Computer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+    <script src="rpss1.js"></script>
+</body>
+</html>

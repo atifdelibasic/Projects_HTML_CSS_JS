@@ -1,0 +1,212 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 40px;
+    font-family: 'Indie Flower',sans-serif ;
+    color:#fff;
+    user-select: none;
+}
+body{
+    background:linear-gradient(to right,rgb(41, 73, 161),rgb(36, 124, 240), rgb(45, 80, 177) );
+}
+.pocetna{
+    background-color: dodgerblue;
+    width:100%;
+    height:100vh;
+    position: absolute;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+.info{
+    width:70%;
+    height: 85%;
+    border-radius: 25px;
+    padding: 30px 60px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+}
+.info h1,.info h2,.info h3, .info p{
+    color:#000;
+    text-align: center;
+}
+.info p{
+    font-size: 30px;
+    color:rgb(0, 0, 66);
+    padding: 20px 0;
+}
+#btnStart{
+    color:#fff;
+    padding: 15px;
+    background-color: dodgerblue;
+    outline:none;
+    cursor:pointer;
+    border:2px solid dodgerblue;
+    border-radius: 60px;
+    margin-top: 20px;
+    transition: all ease .4s;
+}
+#btnStart:hover{
+    background-color:#fff;
+    color:dodgerblue;
+}
+header{
+    width:100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.slike img{
+    padding: 20px 60px;
+}
+
+.naslov{
+    padding-bottom: 10px;
+}
+.naslov p {
+    font-size: 60px;
+}
+.wrapper{
+    margin:0 auto;
+    width:80%;
+}
+#round{
+    text-align: center;
+    padding-bottom: 10px;
+}
+.container{
+    width:100%;
+    display: flex;
+    align-items:center;
+    justify-content: space-evenly;
+    padding-bottom: 20px;
+}
+.container div{
+    width:35%;
+}
+.container img{
+    border-radius: 50%;
+    background-color: #fff;
+}
+#player, #comp{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(41, 73, 161);
+    padding: 10px;
+    border-radius: 25px;
+}
+#player .odabir{
+    width: 100%;
+    padding:20px 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.odabir img{
+    width:90px;
+    padding:5px;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: rgb(255, 255, 255);
+    animation: anim2 2s linear infinite; 
+}
+.odabir img:hover{
+    background:rgb(200, 235, 255);
+}
+#tekst{
+    width:100%;
+    padding: 35px 0;
+    text-align: center;
+}
+#tekst p{
+    font-size:41px;
+}
+.result{text-align: center;}
+.result p{font-size:40px;}
+
+#poruka{
+    width:20%;
+    color:yellow;
+    font-size: 30px;
+    text-align: center;
+    padding: 10px;
+}
+#imgComputer{
+    animation:1s linear infinite;
+}
+@keyframes anim {
+  from{transform:rotate( 0deg);}
+  to{transform:rotate(360deg);}
+  }
+@keyframes anim2 {
+    50%{ transform: rotatey(30deg);}
+    100%{transform: rotatey(0deg);}
+}
+@media only screen and (max-width: 1000px) {
+    body {
+      background-color: lightblue;
+    }
+    .pocetna{
+        width:100%;
+    }
+    .info{
+        padding:10px;
+        width:90%;
+        height:90%;
+    }
+    .info p, .info h1, .info h2{
+        font-size:19px;
+    }
+    #btnStart{
+        font-size: 20px;
+        margin-top:5px;
+    }
+    .wrapper{
+        width:90%;
+    }
+    .slike img{
+        width:35px;
+        padding:0;
+        margin:10px 10px 0 10px;
+    }
+    .naslov p{
+        font-size: 25px;
+    }
+    .round{
+        font-size:20px;
+    }
+    .mainPic{
+        width: 70px;
+        padding: 5px;
+    }
+    .container{
+        flex-direction: column;
+    }
+    #player, #comp{
+        width:100%;
+    }
+    .odabir img{
+        padding: 0;
+        width:60px;
+        padding:5px;
+    }
+    #resPlayer, #resComp{
+        font-size: 25px;
+        padding-bottom: 5px;
+    }
+    #poruka{
+        width:100%;
+        text-align: center;
+        font-size: 15px;
+    }
+    #tekst p{
+        font-size:20px;
+    }
+  }
