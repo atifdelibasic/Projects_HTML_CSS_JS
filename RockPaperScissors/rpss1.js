@@ -10,11 +10,11 @@ var available = true;
 var playerCount = 0, compCount = 0, roundCount = 0, player;
 
 function HideShow(){
-    info.style.display="none";
-    content.style.display="block";
+    info.style.display = "none";
+    content.style.display = "block";
 }
 function Odabir(index) {
-    if(available){
+    if(available) {
     available = false;
     player = index;
     odabir.src = UpdateImg(index);
@@ -29,13 +29,14 @@ function ComputerTurn() {
 function Game() {
     let game = Result();
     available = true;
-    if(game == null){
+
+    if(game == null) {
         Tie();
     }
-    else if(game){
+    else if(game) {
         Win();
     }
-    else{
+    else {
         Lost();
     }
     UpdateRound();
@@ -43,7 +44,7 @@ function Game() {
 
 function Result() {
     let computer = Computer();
-    odabirComp.style.animationName="none";
+    odabirComp.style.animationName = "none";
     odabirComp.src = UpdateImg(computer);
     if(computer == player){
         return null;
@@ -51,24 +52,21 @@ function Result() {
     else if(computer == 1){
         if(player == 2)
             return true;
-        else
-            return false;
+        return false;
     }
     else if(computer == 2){
         if(player == 3)
             return true;
-        else
-            return false;
+        return false;
     }
     else if(computer == 3){
         if(player == 1)
             return true;
-        else
-            return false;
+        return false;
     }
 }
 function Computer() {
-    return Math.floor((Math.random() * 3)+1);
+    return Math.floor((Math.random() * 3) + 1);
 }
 function Win() {
     playerCount++;
