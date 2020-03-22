@@ -1,0 +1,72 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing:  border-box;
+    color: #fff;
+    font-family: 'Baloo Chettan 2', cursive;
+}
+
+body{
+    width: 100%;
+    background:rgb(34, 34, 34);
+}
+span{
+    color:orange;
+}
+#txt, #count{
+    font-size: 70px;
+    width: 70%;
+    text-align: center;
+}
+header{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 30px 0;
+}
+.container{
+    display:  flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+}
+.buttons{
+    display: flex;
+    justify-content: space-evenly;
+    width: 85%;
+    padding: 50px 0px;
+}
+.btnAnswer{
+    width: 350px;
+    height:150px;
+    font-size: 40px;
+    color: #000;
+    outline: none;
+    border-radius: 100px;
+    border: 5px solid orange;
+    cursor: pointer;
+}
+.btnAnswer:hover{
+    background-color: orange;
+    color:#fff;
+}
+
+@media only screen and (max-width: 600px){
+   
+    #txt, #count{
+        font-size: 20px;
+    }
+    .btnAnswer{
+        font-size: 17px;
+        width: 200px;
+        height: 80px;
+        margin-bottom: 10px;
+    }
+    .buttons{
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        padding: 30px 0;
+    }
+}

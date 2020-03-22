@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Chettan+2&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="guessYourNumber.css">
+    <title>Number guesser</title>
+</head>
+<body>
+    <header>
+            <h1>Number guesser</h1>
+    </header>
+    <div class="container">
+        <p id ="txt">Think of a number between <span>0 and 1000</span> and I will guess it in not more than <span>10 tries!</span></p>
+        <div class="buttons">
+            <button class ="btnAnswer" id="yes" onclick="Check(0)">Yes</button>
+            <button class ="btnAnswer" id ="higher" onclick="Check(1)">It's higher</button>
+            <button class ="btnAnswer" id ="lower" onclick="Check(2)">It's lower</button>
+            <button class ="btnAnswer" id ="NewGame" onclick="NewGame()" >New Game</button>
+        </div>
+        <p id ="count"></p>
+    </div>
+    
+    <script src="GuessYourNumber.js"></script>
+</body>
+</html>
