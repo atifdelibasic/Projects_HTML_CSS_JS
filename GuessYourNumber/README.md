@@ -1,1 +1,1 @@
-Dostupno na: http://numberguesser.rf.gd
+Dostupno na linku: http://numberguesser.rf.gd
