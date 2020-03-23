@@ -1,64 +1,63 @@
 
 const Item= "Objekat";
-const taskWrap=document.getElementById('new');
-const btnScroll=document.getElementById('btnScroll');
-var LIST=[];
+const taskWrap = document.getElementById('new');
+const btnScroll = document.getElementById('btnScroll');
+var LIST = [];
 
-function ClearStorage(){
-    LIST=[];
-    localStorage.clear();
-    UkloniSve();
-}
-function KreirajTask(text, line=false, id){
-    var tekst= document.createElement('p');
-    tekst.innerHTML=text;
-
-    let itemBox= document.createElement('div');
-    itemBox.className='task';
-
-    let inputCheck=document.createElement('input');
-    inputCheck.type='checkbox';
-
-    let trash=document.createElement('i');
-    trash.className='fa fa-trash';
-   
-    if(line){
-       SetLineThrough(inputCheck, tekst);
-    }
-    itemBox.id=id;
-    //adding events 
-    trash.addEventListener('click', function(){
-        LIST.splice(itemBox.id,1);
-        setLocalStorage(Item, LIST);
+taskWrap.addEventListener('click', delOrMark);
+//delete or add line-through(checked)
+function delOrMark(e) {
+    let child = e.target.parentElement;
+    if(e.target.className.includes('fa fa-trash')){
+        taskWrap.removeChild(child);
+        LIST.splice(child.id,1);
         UkloniSve();
+        setLocalStorage(Item, LIST);
         getLocalStorage(Item);
-    });
-
-    inputCheck.addEventListener('click', function(){
-        if(this.checked){
-            tekst.style.textDecoration= "line-through";
-            
-            LIST[itemBox.id]={
-                tekst:tekst.innerHTML,
-                line:true
-            }
+    }
+    else if(e.target.type == 'checkbox'){
+        let checkbox = e.target;
+        if(checkbox.checked){
+            LIST[child.id].zavrseno = true;
         }
         else{
-            LIST[itemBox.id]={
-                tekst:tekst.innerHTML,
-                line:false
-            }
-            tekst.style.textDecoration="none";
+            LIST[child.id].zavrseno = false;
         }
         setLocalStorage(Item, LIST);
-    });
+    }
+}
+
+function ClearStorage(){
+    localStorage.clear();
+    LIST=[];
+    UkloniSve();
+}
+
+function KreirajTask(text, zavrseno=false, id){
+    //create elements
+    let tekst = document.createElement('p');
+    tekst.textContent=text;
+    document.getElementById('unos').value='';
+
+    let itemBox = document.createElement('div');
+    itemBox.className ='task';
+    itemBox.id = id;
+
+    let inputCheck = document.createElement('input');
+    inputCheck.type ='checkbox';
+
+    let trash = document.createElement('i');
+    trash.className ='fa fa-trash';
+   
+    if(zavrseno){
+       SetLineThrough(inputCheck, tekst);
+    }
 
     itemBox.appendChild(inputCheck);
     itemBox.appendChild(tekst);
     itemBox.appendChild(trash);
     taskWrap.appendChild(itemBox);
 
-    document.getElementById('unos').value="";
 }
 function SetLineThrough(inputCheck, text){
     text.style.textDecoration="line-through";
@@ -75,11 +74,11 @@ function DodajTask(){
         KreirajTask(inputValue, false, LIST.length);
             LIST.push({
                 tekst:inputValue,
-                line:false
+                zavrseno:false
             });
         setLocalStorage(Item, LIST);
     }
-}
+} 
 
 function setLocalStorage(key,value){
     localStorage.setItem(key, JSON.stringify(value));
@@ -95,7 +94,7 @@ function getLocalStorage(item){
 
 function UcitajTaskove(){
     for(var i=0; i<LIST.length; i++){
-        KreirajTask(LIST[i].tekst, LIST[i].line,i);
+        KreirajTask(LIST[i].tekst, LIST[i].zavrseno,i);
     }
 }
 
@@ -107,20 +106,17 @@ window.onkeydown = e => {
     if(e.key=="Enter"){
         DodajTask();
     }
-    
 }
-window.onscroll= () =>{ScrollFunction();}
+
+window.onscroll= () =>{
+    ScrollFunction();
+}
 
 function ScrollFunction(){
-    if(document.documentElement.scrollTop>20){
+    if(document.documentElement.scrollTop > 20){
         btnScroll.style.display="block";
     }
     else{
         btnScroll.style.display="none";
     }
-}
-
-function goToTop(){
-  document.documentElement.scrollTop = 0; 
-
 }
