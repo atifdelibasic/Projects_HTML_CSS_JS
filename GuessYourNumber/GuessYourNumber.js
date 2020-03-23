@@ -25,7 +25,7 @@ function Check(num) {
         btnLower.hidden = true;
     }
     if(num == 0 || ++brojac == 10) {
-        txt.innerText = `Your number is ${arr[mid]}.`;
+        txt.innerHTML = `Your number is <span>${arr[mid]}</span>.`;
         count.innerText = `Count: ${brojac}`;
         DisableEnable(true);
     }
@@ -50,6 +50,6 @@ function NewGame() {
     Check();
 }
 function GuessText(){
-    txt.innerHTML = `Is your number ${arr[mid]} ?`;;
+    txt.innerHTML = `Is your number <span>${arr[mid]}</span> ?`;;
     count.innerHTML = `Count: ${brojac}`;
 }
