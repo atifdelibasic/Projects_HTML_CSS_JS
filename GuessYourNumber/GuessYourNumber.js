@@ -42,12 +42,12 @@ window.onload = () => {
     DisableEnable(true);
 }
 function NewGame() {
-    brojac = 1 ;
+    brojac = 0 ;
     l = 0;
     r = 1000;
     mid = 500;
     DisableEnable(false);
-    GuessText();
+    Check();
 }
 function GuessText(){
     txt.innerHTML = `Is your number ${arr[mid]} ?`;;
