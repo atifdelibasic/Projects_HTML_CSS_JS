@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Da+2&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="weatherApp.css">
+    <title>WeatherApp</title>
+</head>
+<body>
+    <header>
+        <h1 class="header-txt">Weather App</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">More</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="wrapper">
+        <div class="cuurent-conditions">
+            <h3 class="condition">Current condition: </h3>
+        </div>   
+
+        <div class="container">
+            <div class="temperatura">
+                <h1 class = "stepen"></h1>
+            </div>
+            <div class="lokacija">
+                <h2 class="time-zone">Please wait..</h2>
+            </div>
+        </div>
+        <div class="summary-icon">
+            <canvas class="icon" width="200" height="200"></canvas>
+            <h1 class="summary-section"></h1>
+            <time></time>
+        </div>
+        <div class="wrap-forecast">
+            <!-- <div class="forecast">
+                <canvas class="icon" width="200" height="200"></canvas>
+                <h3>Zove viena</h3>
+            </div> -->
+        </div>
+
+</div>
+<script src="skycons.js"></script>
+<script src="weatherAppG.js"></script>
+</body>
+</html>
