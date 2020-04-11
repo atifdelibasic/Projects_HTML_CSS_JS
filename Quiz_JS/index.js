@@ -55,27 +55,8 @@ function ValidateForm(e) {
        alert(message);
     }
     else {
-        startGame();
+        Game.startGame();
     }
-}
-
-function startGame() {
-    let apiTrivia = createApi();
-    
-    LoadAPI(apiTrivia)
-    .then(data => {
-        qa_list = data.results;
-        console.log(val);
-        if(qa_list.length == val) {
-            Game.LoadNextQuestion();
-            // hide settings page  
-            startSection.style.display = "none";
-            qaSection.style.display ="flex";
-        }
-        else {
-            alert('Not enough questions to start the quiz, try with different setup. Blame the API :)');
-        }
-    });
 }
 
 function createApi() {
@@ -119,29 +100,28 @@ submit.addEventListener('click', () => {
 
 btnNext.addEventListener('click', () => {
         btnNext.style.visibility = "hidden";
-        resetBackCol();
+        UI.resetBackCol();
         Game.LoadNextQuestion();
         clickedEl = undefined;
 });
 
 function AnswerClick (e) {
     if(enableAnswer) {
-        resetBackCol();
+        UI.resetBackCol();
         clickedEl = e.target;
         clickedEl.style.background = "rgb(95, 121, 160)";
         clickedEl.style.color = "#fff";
     }
 }
 
-function resetBackCol() {
-    answer_section.forEach(el => {
-        el.style.background = "#fff";
-        el.style.color = "#000";
-    })
-}
-
-//user interface class
+// User interface class
 class UI {
+    static resetBackCol() {
+        answer_section.forEach(el => {
+            el.style.background = "#fff";
+            el.style.color = "#000";
+        })
+    }
     static LoadQuestionUI() {
         question_section.innerHTML = qa_list[counter].question;
     }
@@ -179,6 +159,25 @@ class UI {
 }
 
 class Game {
+    static startGame() {
+        let apiTrivia = createApi();
+        
+        LoadAPI(apiTrivia)
+        .then(data => {
+            // initialize list
+            qa_list = data.results;
+            if(qa_list.length == val) {
+                Game.LoadNextQuestion();
+                // hide settings page  
+                startSection.style.display = "none";
+                qaSection.style.display ="flex";
+            }
+            else {
+                alert('Not enough questions to start the quiz, try with different setup. Blame the API :)');
+            }
+        });
+    }
+
     static CheckAnswer(item) {
         if(qa_list[counter].correct_answer != item.textContent) {
             item.style.background = "red";
@@ -213,7 +212,7 @@ class Game {
         qaSection.style.display ="none";
         menu.style.display = "flex";
         menu.firstElementChild.innerHTML = 
-        `You guessed: ${correctCount}/${document.querySelector('#amount').value}`;
+        `Answered correctly: ${correctCount}/${document.querySelector('#amount').value}`;
         menu.onclick = () => {
             menu.style.display ="none";
             startSection.style.display="flex";
