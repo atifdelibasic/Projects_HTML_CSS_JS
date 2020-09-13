@@ -1,49 +1,55 @@
-
 const Item = "Tasks";
 const taskWrap = document.getElementById('new');
 const btnScroll = document.getElementById('btnScroll');
+const btnCreate = document.querySelector('.btn-primary');
+
+// list of todos
 let LIST = [];
 
 window.addEventListener('load', () => {
     getLocalStorage(Item);
-})
-
-window.addEventListener('keydown', (e) => {
-    if(e.key == "Enter"){
-        DodajTask();
-    }
-})
+});
 
 window.addEventListener('scroll', () => {
     ScrollFunction();
-})
+});
+
+window.addEventListener('keydown', (e) => {
+    if(e.key === "Enter") {
+        DodajTask();
+    }
+});
+
+btnCreate.addEventListener('click', () => {
+    DodajTask();
+});
 
 taskWrap.addEventListener('click', delOrMark);
-// delete or add line-through(checked)
+
 function delOrMark(e) {
-    let parent = e.target.parentElement;
-    if(e.target.className.includes('fa fa-trash')){
-        taskWrap.removeChild(parent);
-        LIST.splice(parent.id,1);
-        UkloniSve();
-        setLocalStorage(Item, LIST);
-        getLocalStorage(Item);
+    let target = e.target;
+    let todo = target.parentElement;
+
+    if(target.className.includes('fa fa-trash')) {
+        taskWrap.removeChild(todo);
+        LIST.splice(todo.id, 1);
     }
-    else if(e.target.type == 'checkbox'){
+    else if(target.type === 'checkbox') {
         let checkbox = e.target;
         let text = checkbox.nextElementSibling;
-        if(checkbox.checked){
-            console.log('cekirano');
-            LIST[parent.id].zavrseno = true;
+        if(checkbox.checked) {
+            LIST[todo.id].completed = true;
             text.style.textDecoration = "line-through";
         }
-        else{
-            console.log('uncekirano');
-            LIST[parent.id].zavrseno = false;
+        else {
+            LIST[todo.id].completed = false;
             text.style.textDecoration = "none";
         }
-        setLocalStorage(Item, LIST);
     }
+
+    UkloniSve();
+    setLocalStorage(Item, LIST);
+    getLocalStorage(Item);
 }
 
 function ClearStorage(){
@@ -52,15 +58,15 @@ function ClearStorage(){
     UkloniSve();
 }
 
-function KreirajTask(task){
-    // create task
-    let tekst = document.createElement('p');
-    tekst.textContent = task.tekst;
+function createTodo(todo){
+    // create todo
+    let title = document.createElement('p');
+    title.textContent = todo.title;
     document.getElementById('unos').value = '';
 
     let itemBox = document.createElement('div');
     itemBox.className = 'task';
-    itemBox.id = task.id;
+    itemBox.id = todo.id;
 
     let inputCheck = document.createElement('input');
     inputCheck.type ='checkbox';
@@ -68,20 +74,17 @@ function KreirajTask(task){
     let trash = document.createElement('i');
     trash.className = 'fa fa-trash';
    
-    if(task.zavrseno){
-       SetLineThrough(inputCheck, tekst);
+    if(todo.completed) {
+       title.style.textDecoration = "line-through";
+       inputCheck.checked = true;
     }
 
     itemBox.appendChild(inputCheck);
-    itemBox.appendChild(tekst);
+    itemBox.appendChild(title);
     itemBox.appendChild(trash);
     taskWrap.appendChild(itemBox);
 }
 
-function SetLineThrough(inputCheck, text){
-    text.style.textDecoration = "line-through";
-    inputCheck.checked = true;
-}
 
 function UkloniSve(){
     while(taskWrap.hasChildNodes()){
@@ -91,14 +94,15 @@ function UkloniSve(){
 
 function DodajTask(){
     let inputValue = document.getElementById('unos').value.trim();
-    if(inputValue!=''){
-        // KreirajTask(inputValue, false, LIST.length);
-            LIST.push({
-                tekst:inputValue,
-                zavrseno:false,
-                id:LIST.length
-            });
-            KreirajTask(LIST[LIST.length-1]);
+    if(inputValue) {
+        const newTodo = {
+            id: LIST.length,
+            title: inputValue,
+            completed: false
+        };
+        LIST.push(newTodo);
+
+        createTodo(newTodo);
         setLocalStorage(Item, LIST);
     }
 } 
@@ -108,17 +112,15 @@ function setLocalStorage(key,value){
 }
 
 function getLocalStorage(item){
-    var data = localStorage.getItem(item);
-    if(data){
-        LIST = JSON.parse(data);
-        UcitajTaskove();
-    }
+    let data = localStorage.getItem(item);
+    data ? LIST = JSON.parse(data): [];
+    loadTodos();
 }
 
-function UcitajTaskove(){
-    LIST.forEach((task, index) => {
-        task.id = index;
-        KreirajTask(task);
+function loadTodos(){
+    LIST.map((todo, id) => {
+        todo.id = id;
+        createTodo(todo);
     });
 }
 
