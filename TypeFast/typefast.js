@@ -38,10 +38,11 @@ function LoadAPI() {
     seconds.innerHTML = level;
     //load API
     const proxy = `http://cors-anywhere.herokuapp.com/`;
-    fetch(`${proxy}https://api.datamuse.com/words?ml=ringing+in+the+ears`)
+    fetch(`http://api.datamuse.com/words?ml=ringing+in+the+ears`)
     .then((res) => res.json())
     .then(data => {
         words = data;
+        console.log(data);
     });
 }
 
