@@ -37,7 +37,7 @@ function LoadAPI() {
     //display seconds
     seconds.innerHTML = level;
     //load API
-    const proxy = `https://cors-anywhere.herokuapp.com/`;
+    const proxy = `https://api.codetabs.com/v1/proxy?quest=`;
     fetch(`${proxy}https://api.datamuse.com/words?ml=ringing+in+the+ears`)
     .then((res) => res.json())
     .then(data => {
