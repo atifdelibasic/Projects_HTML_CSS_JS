@@ -75,7 +75,7 @@ function createApi() {
 }
 
  function LoadAPI(api) {
-    var proxy = `http://cors-anywhere.herokuapp.com/`;
+    var proxy = `https://api.codetabs.com/v1/proxy?quest=`;
     var url = `${proxy}${api}`;
     return fetch(url)
     .then(res => res.json())
