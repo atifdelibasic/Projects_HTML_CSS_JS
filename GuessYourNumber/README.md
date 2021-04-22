@@ -1,1 +1,1 @@
-Dostupno na linku: http://numberguesser.rf.gd
+https://guess-number-seven.vercel.app/
