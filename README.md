@@ -1,4 +1,4 @@
-# **Mini projects are live, check them out:** <br>
+# [x] **Mini projects are live, check them out:** <br>
 
 https://typefast-six.vercel.app/
 
