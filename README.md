@@ -1,6 +1,6 @@
-# [x] **Mini projects are live, check them out:** <br>
+#  **Mini projects are live, check them out:** <br>
 
-https://typefast-six.vercel.app/
+[x] https://typefast-six.vercel.app/
 
 https://trivia-quiz-snowy.vercel.app/
 
