@@ -1,5 +1,5 @@
 # Projects_HTML_CSS_JS
-Mini projects are live, check them out: 
+Mini projects are live, check them out: <br>
 https://typefast-six.vercel.app/
 
 https://trivia-quiz-snowy.vercel.app/
